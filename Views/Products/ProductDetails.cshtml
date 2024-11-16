@@ -1,0 +1,100 @@
+﻿@model WebDauGiaGiaNguoc.Models.Product
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Views/Shared/_LayoutBid.cshtml";
+}
+
+<div class="container">
+    <!-- row -->
+    <div class="row">
+        <!-- Product main img -->
+        <div class="col-md-5 col-md-push-2">
+            <div id="product-main-img" class="slick-initialized slick-slider">
+
+                <div class="slick-list draggable">
+                    <div class="slick-track" style="opacity: 1; width: 1496px;">
+                        <div class="product-preview slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 374px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; overflow: hidden;">
+                            <img src="..@Model.ImageUrl" alt="">
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <!-- /Product main img -->
+        <!-- Product thumb imgs -->
+        <div class="col-md-2  col-md-pull-5" style="height:300px">
+            <div id="product-imgs" class="slick-initialized slick-slider slick-vertical">
+                <div class="slick-list draggable" style="height: 465px; padding: 0px;">
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+        <!-- /Product thumb imgs -->
+        <!-- Product details -->
+        <div class="col-md-5" style=" padding: 80px 75px;">
+            <div class="product-details">
+                <h2 class="product-name">@Model.ProductName</h2>
+                <div>
+                    <div class="review-link">live: đấu giá giảm trực tiếp</div>
+                </div>
+                @if (Model.ResultBidUser == "Chưa có")
+                {
+                    <p><span>Chưa có người đấu giá</span></p>
+                }
+                else
+                {
+                    <p><span style="color:deepskyblue">@Model.ResultBidUser </span><span>đã đấu giá với mức giá</span></p>
+                }
+
+                <div>
+                    <h3 class="product-price">@Model.CurrentPrice VND</h3>
+                </div>
+                <p></p>
+                <div class="add-to-cart">
+                    <div class="qty-label">
+                        Giá giảm
+                        <div class="input-number" style="width:121px">
+                            <input type="number" value="1000" id="inputNumber" fdprocessedid="0al43m">
+                            <span class="qty-up" id="qtyUp">+</span>
+                            <span class="qty-down" id="qtyDown">-</span>
+                        </div>
+                    </div>
+                    <div class="qty-label">
+                        Mức giá muốn bán
+                        <h3 class="product-price" id="productPrice">@Model.CurrentPrice VND</h3>
+                    </div>
+                    @if (@Model.CurrentPrice <= @Model.EddingPrice)
+                    {
+                        <a id="stopAuctionButton"><button disabled class="add-to-cart-btn" fdprocessedid="vqswj"><i class="fa fa-shopping-cart"></i> Ngưng đấu giá</button></a>
+                    }
+                    else
+                    {
+                <span id="auctionButton" ><button class="add-to-cart-btn" class="" href="~/Products/ProductDetails?id=@Model.ProductID"><i class="fa fa-shopping-cart"></i> Đấu giá</button></span>
+                    }
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /Product details -->
+
+    </div>
+    <!-- /row -->
+</div>
+
+
+

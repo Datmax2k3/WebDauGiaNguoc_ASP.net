@@ -1,0 +1,86 @@
+﻿@model WebDauGiaGiaNguoc.Models.User
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    int randomNumber = ViewBag.RandomNumber ?? 1; // Sử dụng toán tử null-coalescing để cung cấp giá trị mặc định
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+
+    <div class="container">
+        <h4 style="float:right;">Welcome to your Profile Page or you can <a href="/Account/Logout">Logout</a></h4>
+    </div>
+    <div class="container">
+        <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+                <img src="https://bootdey.com/img/Content/avatar/avatar@(@randomNumber).png" alt="Admin" class="rounded-circle" width="150">
+                <div class="mt-3">
+                    @if (Model != null)
+                    {
+                        <h4>@Model.Username</h4>
+                        <p>Avatar: @randomNumber</p>
+                        <p class="text-secondary mb-1">Full Stack Developer</p>
+                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                        <button class="btn btn-primary">Follow</button>
+                        <button class="btn btn-outline-primary">Message</button>
+                    }
+                    else
+                    {
+                        <p>No user found.</p>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0">Họ tên</h4>
+                    </div>
+                    <div style="font-size:18px;" class="col-sm-6 text-secondary">
+                        @Model.FullName
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0">Email</h4>
+                    </div>
+                    <div style="font-size:18px;" class="col-sm-6 text-secondary">
+                        @Model.Email
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0">Số điện thoại</h4>
+                    </div>
+                    <div style="font-size:18px;" class="col-sm-6 text-secondary">
+                        @Model.PhoneNumber
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0">Địa chỉ</h4>
+                    </div>
+                    <div style="font-size:18px;" class="col-sm-6 text-secondary">
+                        @Model.Address
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0">Số tiền hiện có</h4>
+                    </div>
+                    <div style="font-size:18px;" class="col-sm-6 text-secondary">
+                        @Model.Balance
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+    <h1>Please go to the <a href="/Account/Login">Login page</a> </h1>
+}

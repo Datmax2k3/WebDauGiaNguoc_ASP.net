@@ -1,0 +1,295 @@
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Website - Đấu giá ngược</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css" />
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="~/css/slick.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/slick-theme.css" />
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="~/css/nouislider.min.css" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/css/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- font awesome style -->
+    <link rel="stylesheet" type="text/css" href="~/css/test1/font-awesome1.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/test1/style1.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/css/test1/responsive1.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <!-- TOP HEADER -->
+            <div id="top-header">
+                <div class="container">
+                    <ul class="header-links pull-left">
+                        <li><a href="~/Home"> Home page</a></li>
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+                        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                    </ul>
+                    <ul class="header-links pull-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="~/Account"><i class="fa fa-user-o"></i> Hello @User.Identity.Name</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Account/Login"><i class="fa fa-user-o"></i> My Account</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- /TOP HEADER -->
+            <div class="header_bottom">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container ">
+
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- end header section -->
+        <!-- slider section -->
+        <!-- end slider section -->
+    </div>
+
+    <!-- end feature section -->
+    <!-- about section -->
+    <!-- end about section -->
+    <!-- professional section -->
+    <!-- end professional section -->
+    <!-- service section -->
+    @RenderBody()
+
+
+
+    <!-- end service section -->
+    <!-- client section -->
+    <!-- end client section -->
+    <!-- contact section -->
+    <!-- end contact section -->
+    <!-- info section -->
+    <section class="info_section ">
+        <div class="container">
+            <h4>
+                Get In Touch
+            </h4>
+            <div class="row" style="display: flex; justify-content: center;">
+                <div class="col-lg-10 mx-auto">
+                    <div class="info_items">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="">
+                                    <div class="item ">
+                                        <div class="img-box ">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        </div>
+                                        <p>
+                                            Lorem Ipsum is simply dummy text
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="">
+                                    <div class="item ">
+                                        <div class="img-box ">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </div>
+                                        <p>
+                                            +02 1234567890
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="">
+                                    <div class="item ">
+                                        <div class="img-box">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        </div>
+                                        <p>
+                                            demo@gmail.com
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-box">
+            <h4>
+                Follow Us
+            </h4>
+            <div class="box">
+                <a href="">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- end info_section -->
+    <!-- footer section -->
+    <footer class="footer_section">
+        <div class="container">
+            <p>
+                &copy; <span id="displayDateYear"></span> All Rights Reserved By
+                <a href="https://html.design/">Free Html Templates</a>
+            </p>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+    <!-- jQuery Plugins -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/slick.min.js"></script>
+    <script src="~/js/nouislider.min.js"></script>
+    <script src="~/js/jquery.zoom.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script src="~/js/test1/jquery-3.4.1.min.js"></script>
+    <script src="~/js/test1/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <script src="~/js/test1/custom.js"></script>
+    <script>
+        // Debounce function
+function debounce(func, delay) {
+    let timer;
+    return function () {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, arguments), delay);
+    };
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var auctionButton = document.getElementById("auctionButton");
+    var qtyUp = document.getElementById("qtyUp");
+    var qtyDown = document.getElementById("qtyDown");
+    var productPrice = document.getElementById("productPrice");
+
+    auctionButton.addEventListener("click", function (event) {
+        var productId = "@Model.ProductID";
+        var userName = "@User.Identity.Name";
+        var urlUpdateBidUser = "/Products/UpdateBidUser?productId=" + productId + "&userName=" + userName;
+        var urlUpdatePrice = "/Products/UpdatePrice?id=" + productId + "&newPrice=" + parseFloat(productPrice.innerText.replace(" VND", ""));
+
+        // Gửi yêu cầu AJAX để cập nhật thông tin đấu giá
+        var xhrUpdateBidUser = new XMLHttpRequest();
+        xhrUpdateBidUser.open("POST", urlUpdateBidUser, true);
+        xhrUpdateBidUser.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhrUpdateBidUser.onload = function () {
+            if (xhrUpdateBidUser.status === 200) {
+                console.log("Thông tin đấu giá đã được cập nhật thành công trong cơ sở dữ liệu!");
+                // Cập nhật thông tin đấu giá trên giao diện nếu cần
+
+                // Sau khi cập nhật thông tin đấu giá, gửi yêu cầu AJAX để cập nhật giá mới
+                var xhrUpdatePrice = new XMLHttpRequest();
+                xhrUpdatePrice.open("POST", urlUpdatePrice, true);
+                xhrUpdatePrice.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xhrUpdatePrice.onload = function () {
+                    if (xhrUpdatePrice.status === 200) {
+                        console.log("Giá đã được cập nhật thành công trong cơ sở dữ liệu!");
+                        // Reload trang sau khi cập nhật giá
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 100); // 100 milliseconds = 0.1 seconds
+                    } else {
+                        console.error("Đã xảy ra lỗi khi cập nhật giá trong cơ sở dữ liệu!");
+                    }
+                };
+                xhrUpdatePrice.send();
+            } else {
+                console.error("Đã xảy ra lỗi khi cập nhật thông tin đấu giá trong cơ sở dữ liệu!");
+            }
+        };
+        xhrUpdateBidUser.send();
+    });
+
+    qtyUp.addEventListener("click", debounce(function () {
+        var inputNumber = document.getElementById("inputNumber");
+        var inputValue = parseFloat(inputNumber.value);
+        var currentPrice = parseFloat(productPrice.innerText);
+
+        if (!isNaN(inputValue)) {
+            var newPrice = currentPrice + inputValue;
+            if (newPrice <= parseFloat("@Model.CurrentPrice")) {
+                productPrice.innerText = newPrice.toFixed(2) + " VND";
+            } else {
+                alert("Giá mới không thể vượt qua giá hiện tại!");
+            }
+        }
+    }, 200)); // Delay 300ms
+
+    qtyDown.addEventListener("click", debounce(function () {
+        var inputNumber = document.getElementById("inputNumber");
+        var inputValue = parseFloat(inputNumber.value);
+        var currentPrice = parseFloat(productPrice.innerText);
+
+        if (!isNaN(inputValue) && inputValue > 0) {
+            var newPrice = currentPrice - inputValue;
+            if (newPrice >= 0) {
+                productPrice.innerText = newPrice.toFixed(2) + " VND";
+            } else {
+                alert("Mức giá không thể âm!");
+            }
+        }
+    }, 200)); // Delay 300ms
+});
+
+    </script>
+
+    <script>
+    
+    </script>
+
+
+
+</body>
+
+</html>

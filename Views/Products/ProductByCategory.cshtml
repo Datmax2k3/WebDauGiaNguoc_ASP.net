@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebDauGiaGiaNguoc.Models.Product>
+@{
+    ViewData["Title"] = "ProductByCategory";
+    Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        @{ var printedCategories = new HashSet<string>(); }
+
+        @foreach (var item in Model)
+        {
+            if (!printedCategories.Contains(item.Category.CategoryName))
+            {
+    <h1>@item.Category.CategoryName</h1>printedCategories.Add(item.Category.CategoryName);
+                    }
+                }
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-xs-6">
+                    <div class="product" style="margin-bottom:42px">
+                        <div class="product-img">
+                            <img src="..@item.ImageUrl" alt="">
+                            <div class="product-label">
+                                @if (item.CurrentPrice <= item.EddingPrice)
+                                {
+                                    <text><span class="new">
+                                            Đã đấu giá xong</text>
+                                }
+                                else
+                                {
+                                    <text><span class="new" style="background-color: lawngreen; border-color: lawngreen; ">
+                                            Đang đấu giá</text>
+                                }
+                    </div>
+                </div>
+                <div class="product-body">
+                    <p class="product-category">@item.Category.CategoryName</p>
+                    <h3 class="product-name"><a href="#">@item.ProductName</a></h3>
+                    <h3 class="product-name" style="margin:0"><a href="#">Giá khởi điểm</a></h3><del class="product-old-price">@item.StartingPrice</del>
+                    @if (item.ResultBidUser == "Chưa có")
+                    {
+                        <p><span>Chưa có người đấu giá</span></p>
+                    }
+                    else
+                    {
+                        <p><span style="color:deepskyblue">@item.ResultBidUser </span><span>đã đấu giá với mức giá</span></p>
+                    }
+                    <h4 class="product-price" style="margin-top:10px">@item.CurrentPrice </h4>
+                </div>
+                <div class="add-to-cart">
+                    @if (item.CurrentPrice <= item.EddingPrice)
+                    {
+                        <a href="~/Products/ProductDetails?id=@item.ProductID">
+                            <button class="add-to-cart-btn" disabled><i class="fa fa-shopping-cart" style="padding: 0 8px"></i>Ngưng đấu giá </button>
+                        </a>
+                    }
+                    else
+                    {
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="~/Products/ProductDetails?id=@item.ProductID">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart" style="padding: 0 8px"></i>Đấu giá </button>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="~/Account/Login">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart" style="padding: 0 8px"></i>Đấu giá </button>
+                            </a>
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /product -->
+
+        <div class="clearfix visible-sm visible-xs"></div>
+    }
+
+            <!-- /product -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

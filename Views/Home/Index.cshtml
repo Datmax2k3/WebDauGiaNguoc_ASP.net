@@ -1,0 +1,142 @@
+﻿@model IEnumerable<WebDauGiaGiaNguoc.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHomepage.cshtml";
+}
+
+@section Footer{
+    <!-- NEWSLETTER -->
+    <div id="newsletter" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="newsletter">
+                        <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+                        <form>
+                            <input class="input" type="email" placeholder="Enter Your Email">
+                            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+                        </form>
+                        <ul class="newsletter-follow">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /NEWSLETTER -->
+}
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Sản phẩm đấu giá</h3>
+                    <div class="section-nav">
+                    </div>
+                </div>
+            </div>
+            <!-- /section title -->
+            <!-- Products tab & slick -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div id="tab1" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                @foreach (var item in Model)
+                                {
+                                    <!-- product -->
+                                    <div class="product" style="margin-bottom:42px">
+                                        <div class="product-img">
+                                            <img src=".@item.ImageUrl" alt="">
+                                            <div class="product-label">
+                                                    @if (item.CurrentPrice <= item.EddingPrice)
+                                                    {
+                                                        <text><span class="new">
+                                                                Đã đấu giá xong</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <text><span class="new" style="background-color: lawngreen; border-color: lawngreen; ">
+                                                                Đang đấu giá</text>
+                                                    }
+                                        </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">@item.Category.CategoryName</p>
+                                            <h3 class="product-name"><a href="#">@item.ProductName</a></h3>
+                                            <h3 class="product-name" style="margin:0"><a href="#">Giá khởi điểm</a></h3><del class="product-old-price">@item.StartingPrice</del>
+                                            @if (item.ResultBidUser == "Chưa có")
+                                            {
+                                                <p><span>Chưa có người đấu giá</span></p>
+                                            }
+                                            else
+                                            {
+                                                <p><span style="color:deepskyblue">@item.ResultBidUser </span><span>đã đấu giá với mức giá</span></p>
+                                            }
+                                            <h4 class="product-price" style="margin-top:10px">@item.CurrentPrice </h4>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            @if (item.CurrentPrice <= item.EddingPrice)
+                                            {
+                                                <a href="~/Products/ProductDetails?id=@item.ProductID">
+                                                    <button class="add-to-cart-btn" disabled><i class="fa fa-shopping-cart" style="padding: 0 8px"></i>Ngưng đấu giá </button>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <a href="~/Products/ProductDetails?id=@item.ProductID">
+                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart" style="padding: 0 8px"></i>Đấu giá </button>
+                                                    </a>
+                                                }
+                                                else
+                                                { 
+                                                    <a href="~/Account/Login">
+                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart" style="padding: 0 8px"></i>Đấu giá </button>
+                                                    </a>
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                    <!-- /product -->
+                                }
+
+                                </div>
+                            <div id="slick-nav-1" class="products-slick-nav"></div>
+                        </div>
+                        <!-- /tab -->
+                    </div>
+                </div>
+            </div>
+            <!-- Products tab & slick -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
